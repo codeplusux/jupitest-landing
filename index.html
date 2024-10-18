@@ -225,6 +225,7 @@
     @media (max-width: 1000px) {
       .badge {
         transform: scale(.7);
+        margin-top: -80px;
       }
 
       .tagline {
@@ -306,6 +307,10 @@
         width: 10%;
         margin-top: 30px;
       }
+
+      .space {
+        width: 20%;
+      }
     }
 
     @media (max-width: 767px) {
@@ -323,7 +328,7 @@
     @media (min-width: 768px) and (max-width: 1024px) {
       .feature img {
         margin-top: -128px;
-        width: 900px;
+        width: 123%;
         margin-left: -72px;
       }
     }
@@ -332,7 +337,7 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
-  <div>
+  <div style="overflow: hidden;">
     <div class="flex container block header mt3 sm-mt2 align-center">
       <div class="col text-center mx-auto">
         <img class="badge" src="i/jupitest-badge.svg" alt="">
@@ -411,7 +416,7 @@
       <div class="text-center">
         <img class="align-center avatar" src="i/avatar.png" width="25%" alt="Pablo Vivanco Experience Designer"><br>
         <p><strong>Pablo Vivanco</strong> <br>Experience Designer</p>
-        <img class="align-center" src="i/space.svg" width="50%" alt="Space">
+        <img class="space align-center" src="i/space.svg" width="50%" alt="Space">
       </div>
     </div>
   </div>
