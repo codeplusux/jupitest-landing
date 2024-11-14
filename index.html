@@ -426,19 +426,20 @@
 
 
   <script>
-    document.getElementById("shareLinkedIn").addEventListener("click", function () {
-        // URL de tu página web a compartir
-        const urlToShare = "https://jupitest.app";
-        // Texto opcional para agregar un comentario o descripción en la publicación
-        const title = "Conoce Jupitest";
-        const summary = "Test app iOS";
+    // Función para abrir la ventana de LinkedIn
+    function shareOnLinkedIn() {
+            const urlToShare = "https://jupitest.app";
+            const title = "Frictionless usability test app iOS";
+            const summary = "Available this summer";
 
-        // URL de LinkedIn Share con parámetros
-        const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(summary)}`;
+            const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(summary)}`;
+            window.open(linkedInUrl, "_blank", "width=600,height=400");
+        }
 
-        // Abrir una ventana emergente
-        window.open(linkedInUrl, "_blank", "width=600,height=400");
-    });
+        // Asignar el evento de click a todos los botones con la clase "shareLinkedIn"
+        document.querySelectorAll(".shareLinkedIn").forEach(button => {
+            button.addEventListener("click", shareOnLinkedIn);
+        });
 </script>
 
 
