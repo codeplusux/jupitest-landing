@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="URL_DE_TU_IMAGEN_DESTACADA" />
+
   <title>Jupitest</title>
   <style>
     *, *:before, *:after {
@@ -347,7 +349,7 @@
           Available this summer
         </p>
         <div class="mt3 sm-mt2">
-          <a class="btn btn-lg btn-secondary" href="#">Share</a>
+          <a id="shareLinkedIn" class="btn btn-lg btn-secondary" href="#">Share</a>
           <a class="btn btn-lg btn-primary" href="#">Get App</a>
         </div>
       </div>
@@ -421,5 +423,24 @@
       </div>
     </div>
   </div>
+
+
+  <script>
+    document.getElementById("shareLinkedIn").addEventListener("click", function () {
+        // URL de tu página web a compartir
+        const urlToShare = "https://jupitest.app";
+        // Texto opcional para agregar un comentario o descripción en la publicación
+        const title = "Conoce Jupitest";
+        const summary = "Test app iOS";
+
+        // URL de LinkedIn Share con parámetros
+        const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(summary)}`;
+
+        // Abrir una ventana emergente
+        window.open(linkedInUrl, "_blank", "width=600,height=400");
+    });
+</script>
+
+
 </body>
 </html>
