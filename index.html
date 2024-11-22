@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Jupitest">
+
+  <!-- Etiquetas Open Graph -->
   <meta property="og:title" content="Jupitest: Frictionless Usability Test App for iOS" />
-  <meta name="description" property="og:description" content="Available this summer. Measure time and efficiency in usability tests effortlessly." />
-  <meta name="image" property="og:image" content="https://firebasestorage.googleapis.com/v0/b/t5t-web-app.appspot.com/o/jupitest-share.jpg?alt=media&token=9f422608-7c4d-401a-b851-6d513baa1d07" />
+  <meta property="og:description" content="Available this summer. Measure time and efficiency in usability tests effortlessly." />
+  <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/t5t-web-app.appspot.com/o/jupitest-share.jpg?alt=media&token=9f422608-7c4d-401a-b851-6d513baa1d07" />
   <meta property="og:url" content="https://jupitest.app" />
   <meta property="og:type" content="website" />
   <meta name="author" content="Pablo Vivanco - UX Designer">
 
-  
-  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png">
 
-
+  <!-- Título de la Página -->
   <title>Jupitest</title>
+
   <style>
     *, *:before, *:after {
       -moz-box-sizing: border-box;
@@ -432,23 +433,18 @@
   </div>
 
 
-  <script>
-    // Función para abrir la ventana de LinkedIn
+    <script>
+    // Función para compartir en LinkedIn
     function shareOnLinkedIn() {
-            const urlToShare = "https://jupitest.app";
-            const title = "Frictionless usability test app iOS";
-            const summary = "Available this summer";
+        const urlToShare = "https://jupitest.app";
+        const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}`;
+        window.open(linkedInUrl, "_blank", "width=600,height=400");
+    }
 
-            const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(summary)}`;
-            window.open(linkedInUrl, "_blank", "width=600,height=400");
-        }
-
-        // Asignar el evento de click a todos los botones con la clase "shareLinkedIn"
-        document.querySelectorAll(".shareLinkedIn").forEach(button => {
-            button.addEventListener("click", shareOnLinkedIn);
-        });
-</script>
-
-
+    // Asignar el evento de click a todos los botones con la clase "shareLinkedIn"
+    document.querySelectorAll(".shareLinkedIn").forEach(button => {
+        button.addEventListener("click", shareOnLinkedIn);
+    });
+  </script>
 </body>
 </html>
