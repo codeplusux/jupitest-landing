@@ -236,6 +236,17 @@
       line-height: 30px;
     }
 
+    video {
+      height: 662px;
+      border-radius: 49px;
+      position: absolute;
+      margin: 0 auto;
+      left: 5px;
+      right: 5px;
+      top: 8px;
+    }
+
+
     @media (max-width: 1000px) {
       .badge {
         transform: scale(.7);
@@ -264,12 +275,6 @@
 
       .device-container img {
         height: 500px;
-      }
-
-      .device-container video {
-        padding: 14px 21px;
-        height: 500px;
-        width: 260px;
       }
 
       .flex {
@@ -325,6 +330,17 @@
       .space {
         width: 20%;
       }
+
+      video {
+        height: 482px;
+        border-radius: 49px;
+        position: absolute;
+        margin: 0 auto;
+        left: auto;
+        right: auto;
+        bottom: 0;
+    }
+
     }
 
     @media (max-width: 767px) {
@@ -337,6 +353,17 @@
       .by img {
         width: 20%;
       }
+
+      video {
+height: 492px;
+width: 246px;
+/* padding: 20px 27px; */
+border-radius: 58px;
+/* border-inline: 1px solid lime; */
+position: absolute;
+left: 0;
+}
+    
     }
 
     @media (min-width: 768px) and (max-width: 1024px) {
@@ -345,7 +372,15 @@
         width: 123%;
         margin-left: -72px;
       }
+
+      video {
+      height: 484px;
+      border-radius: 49px;
+      position: absolute;
+      left: 8px;
     }
+    }
+      
   </style>
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -369,6 +404,9 @@
       <div class="col">
         <div class="flex align-center device-container mx-auto">
           <div class="relative sm-mt3">
+            <video autoplay="" playsinline="" muted="" loop="">
+              <source src="media/video-jupitest.mp4" type="video/mp4">
+            </video>
             <img class="iPhone" src="i/iphone-app.png" alt="">
           </div>
         </div>
