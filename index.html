@@ -168,10 +168,6 @@
       color: #1b1c1e;
     }
 
-    .feature img {
-      margin-top: -143px;
-    }
-
     .feature h2 {
       color: #fff;
       font-weight: 500;
@@ -192,6 +188,11 @@
       color: #fff;
       position: relative;
       z-index: 1;
+      text-align: left;
+    }
+
+    .box-box img {
+
     }
 
     .box-box h2 {
@@ -245,6 +246,12 @@
       right: 5px;
       top: 11px;
     }
+
+    #control {
+        width: 50%;
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
 
 
     @media (max-width: 1000px) {
@@ -304,10 +311,6 @@
         font-size: 1.3em;
       }
 
-      .feature img {
-        width: 700px;
-      }
-
       h2 {
         font-size: 1.4rem;
       }
@@ -344,9 +347,10 @@
     }
 
     @media (max-width: 767px) {
-      .feature img {
-        width: 100%;
-        margin-top: 0;
+      #control {
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 50px;
       }
 
       .by img {
@@ -365,9 +369,10 @@
     }
 
     @media (min-width: 768px) and (max-width: 1024px) {
-      .feature img {
-        width: 100%;
-        margin-top: 0;
+      #control {
+        width: 55%;
+        margin-top: 20px;
+        margin-bottom: 50px;
       }
 
       video {
@@ -413,8 +418,7 @@
     <div class="container text-center mt4 sm-mt3 feature">
       <h2 class="mb1 sm-mb0">Capture and Analyze</h2>
       <h3 class="text-tertiary mt0">Effectiveness, Efficiency on the go </h3>
-      <img src="i/jupitest-control.svg" class="p2" alt="Three Input Modes: Type, Record, or use Camera">
-    </div>
+      <img id="control" src="i/control.png" class="p2" alt="">
 
     <div class="flex container-sm sm-mt3">
       <div class="col block box-box">
