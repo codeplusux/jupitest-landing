@@ -26,6 +26,7 @@
       font-family: Helvetica, sans-serif;
     }
 
+    
     a {
       text-decoration: none;
     }
@@ -139,11 +140,6 @@
       text-align: center;
     }
 
-    .device-container img {
-      display: block;
-      height: 680px;
-    }
-
     .btn {
       display: inline-block;
       text-align: center;
@@ -232,7 +228,7 @@
     }
 
     .by p {
-      color: #6e737b;
+      color: #c6c6c6;
       font-weight: 200;
       line-height: 30px;
     }
@@ -240,7 +236,6 @@
     video {
       height: 654px;
       border-radius: 49px;
-      position: absolute;
       margin: 0 auto;
       left: 5px;
       right: 5px;
@@ -288,9 +283,9 @@
         display: block;
       }
 
-      .sm-mt3 {
+      /*.sm-mt3 {
         margin-top: 64px;
-      }
+      }*/
 
       .btn-lg {
         min-width: 130px;
@@ -337,10 +332,8 @@
       video {
         height: 482px;
         border-radius: 49px;
-        position: absolute;
-        margin: 0 auto;
-        left: auto;
-        right: auto;
+        left: 0;
+        right: 0;
         bottom: 0;
     }
 
@@ -363,7 +356,13 @@
         border-radius: 58px;
         position: absolute;
         left: 0;
+        right: 0;
         top: 5px;
+      }
+
+      .device-container div {
+        display: block;
+        height: 500px;
       }
     
     }
@@ -392,9 +391,7 @@
         <img class="badge" src="i/jupitest-badge.svg" alt="">
         <h1 class="mt5 sm-mt1 mb0 jupitest-brand">Jupitest</h1>
         <h3 class="tagline mt1">Frictionless usability test app</h3>
-        <p class="text-secondary text-center mt0">
-          Soon in App Store
-        </p>
+
         <div class="mt3 sm-mt2">
           <a class="shareLinkedIn btn btn-lg btn-secondary" href="#">Share</a>
           <a class="btn btn-lg btn-primary" href="https://apps.apple.com/cl/app/jupitest/id6670706413?l=en-GB">Get App</a>
@@ -407,7 +404,7 @@
             <video autoplay="" playsinline="" muted="" loop="">
               <source src="media/video-jupitest.mp4" type="video/mp4">
             </video>
-            <img class="iPhone" src="i/iphone-app.png" alt="">
+            <div class="iPhone"></div>
           </div>
         </div>
       </div>
@@ -449,10 +446,8 @@
         <div class="qrcode mx-auto mb3 sm-mb2">
           <img class="align-center" src="i/qr.png" width="100%" alt="App QR Code">
         </div>
-        <h2 class="text-center mb1">Soon scan to download</h2>
-        <p class="text-secondary text-center mt0">
-          Soon in App Store
-        </p>
+        <h2 class="text-center mb1">Scan to download</h2>
+
         <div class="mt2 text-center">
           <a class="shareLinkedIn btn btn-lg btn-secondary" href="#">Share</a>
           <a class="btn btn-lg btn-primary" href="https://apps.apple.com/cl/app/jupitest/id6670706413?l=en-GB">Get App</a>
@@ -464,7 +459,7 @@
       <div class="text-center">
         <img class="align-center avatar" src="i/avatar.png" width="25%" alt="Pablo Vivanco Experience Designer"><br>
         <p><strong>Pablo Vivanco</strong> <br>Experience Designer</p>
-        <img class="space align-center" src="i/space.svg" width="50%" alt="Space">
+        <img class="space align-center" src="i/cosmos.svg" width="50%" alt="Space">
       </div>
     </div>
   </div>
