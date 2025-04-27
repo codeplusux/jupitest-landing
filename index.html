@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Etiquetas Open Graph -->
+
   <meta property="og:title" content="Jupitest: Frictionless Usability Test App for iOS" />
   <meta property="og:description" content="Available this summer. Measure time and efficiency in usability tests effortlessly." />
   <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/t5t-web-app.appspot.com/o/jupitest-share-this-summer.jpg?alt=media&token=2afee942-57dc-4c5b-b24b-ba75355b3e68" />
@@ -12,10 +12,10 @@
   <meta property="og:type" content="website" />
   <meta name="author" content="Pablo Vivanco - UX Designer">
 
-  <!-- Favicon -->
+
   <link rel="icon" type="image/png" href="./favicon.png">
 
-  <!-- Título de la Página -->
+
   <title>Jupitest</title>
 
   <style>
@@ -466,17 +466,28 @@
 
 
     <script>
-    // Función para compartir en LinkedIn
-    function shareOnLinkedIn() {
-        const urlToShare = "https://jupitest.app";
-        const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}`;
-        window.open(linkedInUrl, "_blank", "width=600,height=400");
-    }
+      // Función para compartir en LinkedIn
+      function shareOnLinkedIn() {
+          const urlToShare = "https://jupitest.app";
+          const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}`;
+          window.open(linkedInUrl, "_blank", "width=600,height=400");
+      }
 
-    // Asignar el evento de click a todos los botones con la clase "shareLinkedIn"
-    document.querySelectorAll(".shareLinkedIn").forEach(button => {
-        button.addEventListener("click", shareOnLinkedIn);
-    });
-  </script>
+      document.querySelectorAll(".shareLinkedIn").forEach(button => {
+          button.addEventListener("click", shareOnLinkedIn);
+      });
+    </script>
+
+  <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5L0QHEVFPR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5L0QHEVFPR');
+    </script>
+
+
 </body>
 </html>
