@@ -11,6 +11,8 @@
   <meta property="og:url" content="https://jupitest.app" />
   <meta property="og:type" content="website" />
   <meta name="author" content="Pablo Vivanco - UX Designer">
+  
+  
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png">
@@ -464,19 +466,85 @@
     </div>
   </div>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
-    <script>
-    // Función para compartir en LinkedIn
-    function shareOnLinkedIn() {
-        const urlToShare = "https://jupitest.app";
-        const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}`;
-        window.open(linkedInUrl, "_blank", "width=600,height=400");
-    }
+<script>
+  // Configuración de Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyAk7XnGwEagb0oR5X67hJw0tgdxfCajYhg",
+    authDomain: "t5t-web-app.firebaseapp.com",
+    projectId: "t5t-web-app",
+    storageBucket: "t5t-web-app.appspot.com",
+  };
 
-    // Asignar el evento de click a todos los botones con la clase "shareLinkedIn"
-    document.querySelectorAll(".shareLinkedIn").forEach(button => {
-        button.addEventListener("click", shareOnLinkedIn);
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const storage = firebase.storage();
+
+  firebase.auth().signInAnonymously().catch(error => {
+    console.error('Auth error:', error);
+  });
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      console.log('Usuario autenticado:', user.uid);
+      const testerId = user.uid;
+      const formularioId = '5DW5zng4Pt5gMx4Cf1D2';
+      const docRef = db.collection('heatmaps').doc(testerId);
+
+      // Verifica si ya existe el screenshot
+      docRef.get().then(doc => {
+        if (!doc.exists || !doc.data().screenshotUrl) {
+          html2canvas(document.body, { useCORS: true }).then(canvas => {
+  canvas.toBlob(blob => {
+    const screenshotRef = storage.ref(`heatmaps/${formularioId}/${testerId}/screenshot.png`);
+    screenshotRef.put(blob, { contentType: 'image/png' }).then(snapshot => {
+      return snapshot.ref.getDownloadURL();
+    }).then(downloadURL => {
+      console.log('Screenshot subida:', downloadURL);
+      return docRef.set({ formularioId: formularioId, screenshotUrl: downloadURL, screenshotWidth: canvas.width, screenshotHeight: canvas.height}, { merge: true });
+    }).catch(error => {
+      console.error('Error subiendo screenshot:', error);
     });
-  </script>
+  });
+});
+
+        } else {
+          console.log('Screenshot ya existe:', doc.data().screenshotUrl);
+        }
+      });
+
+      // Captura de clics
+      document.addEventListener('click', event => {
+        docRef.collection('clicks').add({
+          x: event.clientX,
+          y: event.clientY,
+          viewportWidth: window.innerWidth,
+          viewportHeight: window.innerHeight,
+          timestamp: new Date(),
+          pageUrl: window.location.href
+        }).then(() => {
+          console.log('Click registrado');
+        }).catch(error => {
+          console.error('Error registrando click:', error);
+        });
+      });
+
+    } else {
+      console.log('Usuario NO autenticado');
+    }
+  });
+</script>
+
+
+
+
 </body>
 </html>
+
+

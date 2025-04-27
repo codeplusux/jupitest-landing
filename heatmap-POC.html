@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heatmap POC Firebase</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+
+<canvas id="heatmap"></canvas>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAk7XnGwEagb0oR5X67hJw0tgdxfCajYhg",
+    authDomain: "t5t-web-app.firebaseapp.com",
+    projectId: "t5t-web-app",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const testerId = 'pMSo7FGY0Jbu5pk0iO0hzOOlaWu2';
+  const screenshotUrl = 'https://firebasestorage.googleapis.com/v0/b/t5t-web-app.appspot.com/o/heatmaps%2F5DW5zng4Pt5gMx4Cf1D2%2FjRNlopsTQic8iXP6NcoJdA0oL803%2Fscreenshot.png?alt=media';
+
+  const canvas = document.getElementById('heatmap');
+  const ctx = canvas.getContext('2d');
+
+  const img = new Image();
+  img.crossOrigin = "anonymous";
+  img.src = screenshotUrl;
+
+  img.onload = function() {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+
+    db.collection('heatmaps')
+      .doc(testerId)
+      .collection('clicks')
+      .get()
+      .then(snapshot => {
+        console.log("Total documentos:", snapshot.size);
+        snapshot.forEach(doc => {
+  const data = doc.data();
+
+  if (!data.viewportWidth || !data.viewportHeight) {
+    console.warn("Datos de viewport inválidos:", data);
+    return;
+  }
+
+  const scaleX = canvas.width / data.viewportWidth;
+  const scaleY = canvas.height / data.viewportHeight;
+
+  const adjustedX = data.x * scaleX;
+  const adjustedY = data.y * scaleY;
+
+  // CORRECCIÓN DEL DESPLAZAMIENTO VERTICAL
+  const offsetY = canvas.height - data.viewportHeight * scaleY;
+  const finalY = adjustedY + offsetY / 2;  // Centra el clic verticalmente
+
+  if (isNaN(adjustedX) || isNaN(finalY)) {
+    console.warn("Coordenadas inválidas:", adjustedX, finalY);
+    return;
+  }
+
+  drawClick(adjustedX, finalY);
+});
+
+      });
+  };
+
+  function drawClick(x, y) {
+    // Escala dinámica: radio relativo al tamaño del canvas
+    const scaleFactor = (canvas.width + canvas.height) / 2000;  // Ajusta 2000 para más/menos intensidad
+    const radius = 20 * scaleFactor;
+
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0, 'rgba(255,0,0,0.6)');
+    gradient.addColorStop(1, 'rgba(255,0,0,0)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+  }
+</script>
+
+</body>
+</html>
